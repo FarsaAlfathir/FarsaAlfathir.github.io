@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Muhammad Farsa Alfathir Setya — Portofolio</title>
+<meta name="description" content="Portofolio Muhammad Farsa Alfathir Setya — Web Development, Database Management, dan Sistem Digital.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          bg: '#0B1220',
+          panel: '#121A2E',
+          panelAlt: '#0E1526',
+          border: '#232D42',
+          ink: '#E7ECF5',
+          muted: '#8792A8',
+          accent: '#22D3EE',
+          accent2: '#34D399',
+          amber: '#F2C14E',
+        },
+        fontFamily: {
+          mono: ['"JetBrains Mono"', 'monospace'],
+          sans: ['"Inter"', 'sans-serif'],
+        },
+      }
+    }
+  }
+</script>
+
+<style>
+  html { scroll-behavior: smooth; }
+  body { background-color: #0B1220; }
+  .section-pad { padding-top: 6rem; padding-bottom: 6rem; }
+  @media (max-width: 640px) { .section-pad { padding-top: 3.5rem; padding-bottom: 3.5rem; } }
+
+  .db-grid {
+    background-image:
+      linear-gradient(rgba(34,211,238,0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(34,211,238,0.06) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  .nav-link { position: relative; color: #8792A8; transition: color .2s ease; font-family: 'JetBrains Mono', monospace; font-size: .8rem; }
+  .nav-link:hover { color: #E7ECF5; }
+  .nav-link::before { content: '// '; color: #34D399; opacity: 0; transition: opacity .2s ease; }
+  .nav-link:hover::before { opacity: 1; }
+
+  .panel { background: #121A2E; border: 1px solid #232D42; border-radius: .75rem; }
+  .panel-alt { background: #0E1526; border: 1px solid #232D42; border-radius: .75rem; }
+
+  .btn-primary { background: #22D3EE; color: #06131A; font-family: 'JetBrains Mono', monospace; transition: background .2s ease, transform .15s ease; }
+  .btn-primary:hover { background: #67E3F5; }
+  .btn-primary:active { transform: scale(0.98); }
+
+  .btn-outline { border: 1.5px solid #232D42; color: #E7ECF5; font-family: 'JetBrains Mono', monospace; transition: border-color .2s ease, background .2s ease; }
+  .btn-outline:hover { border-color: #22D3EE; background: rgba(34,211,238,0.06); }
+
+  .btn-ghost { border: 1.5px dashed #2C3650; color: #8792A8; font-family: 'JetBrains Mono', monospace; transition: border-color .2s ease, color .2s ease; }
+  .btn-ghost:hover { border-color: #34D399; color: #34D399; }
+
+  .code-tag {
+    font-family: 'JetBrains Mono', monospace;
+    background: #0E1526;
+    border: 1px solid #232D42;
+    color: #34D399;
+  }
+  .code-tag .brkt { color: #48566f; }
+
+  .eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    color: #34D399;
+    font-size: .75rem;
+    letter-spacing: .02em;
+  }
+  .eyebrow::before { content: '// '; color: #48566f; }
+
+  .cursor-blink {
+    display: inline-block;
+    width: .55ch;
+    background: #22D3EE;
+    animation: blink 1.1s steps(1) infinite;
+  }
+  @keyframes blink { 50% { opacity: 0; } }
+
+  .win-dot { width: .6rem; height: .6rem; border-radius: 9999px; }
+
+  .fade-up { opacity: 0; transform: translateY(16px); transition: opacity .6s ease, transform .6s ease; }
+  .fade-up.in-view { opacity: 1; transform: translateY(0); }
+  @media (prefers-reduced-motion: reduce) { .fade-up { opacity: 1; transform: none; transition: none; } }
+
+  ::selection { background: #134752; color: #E7ECF5; }
+  a:focus-visible, button:focus-visible { outline: 2px solid #22D3EE; outline-offset: 2px; border-radius: 4px; }
+
+  .thumb-fallback {
+    background:
+      linear-gradient(135deg, rgba(34,211,238,0.10), rgba(52,211,153,0.04) 60%),
+      repeating-linear-gradient(45deg, rgba(34,211,238,0.05) 0px, rgba(34,211,238,0.05) 1px, transparent 1px, transparent 12px);
+  }
+  .avatar-fallback {
+    background: linear-gradient(135deg, rgba(34,211,238,0.15), rgba(52,211,153,0.08));
+  }
+
+  .kv-row { border-top: 1px dashed #232D42; }
+  code, .mono { font-family: 'JetBrains Mono', monospace; }
+</style>
+</head>
+
+<body class="font-sans text-ink antialiased">
+
+<!--NAVBAR-->
+<header class="sticky top-0 z-50 bg-bg/90 backdrop-blur border-b border-border">
+  <div class="max-w-6xl mx-auto px-6 md:px-10 h-16 flex items-center justify-between">
+    <a href="#" class="mono text-sm font-semibold tracking-tight text-ink flex items-center">
+      <span class="text-accent2">~/</span><span>farsa</span><span class="cursor-blink">&nbsp;</span>
+    </a>
+
+    <nav class="hidden md:flex items-center gap-7">
+      <a href="#tentang" class="nav-link">tentang</a>
+      <a href="#layanan" class="nav-link">layanan</a>
+      <a href="#pengalaman" class="nav-link">pengalaman</a>
+      <a href="#proyek" class="nav-link">proyek</a>
+    </nav>
+
+    <a href="#kontak" class="hidden md:inline-flex items-center gap-2 btn-primary text-xs font-semibold px-4 py-2 rounded-md">
+      hubungi_saya()
+    </a>
+
+    <button id="menuBtn" class="md:hidden p-2 -mr-2" aria-label="Buka menu" aria-expanded="false">
+      <svg id="menuIconOpen" class="w-6 h-6 text-ink" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M4 7h16M4 12h16M4 17h16"/>
+      </svg>
+      <svg id="menuIconClose" class="w-6 h-6 text-ink hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+      </svg>
+    </button>
+  </div>
+
+  <div id="mobileMenu" class="md:hidden hidden border-t border-border bg-bg">
+    <nav class="flex flex-col px-6 py-4 gap-4 mono text-sm">
+      <a href="#tentang" class="mobile-link text-ink/80">tentang</a>
+      <a href="#layanan" class="mobile-link text-ink/80">layanan</a>
+      <a href="#pengalaman" class="mobile-link text-ink/80">pengalaman</a>
+      <a href="#proyek" class="mobile-link text-ink/80">proyek</a>
+      <a href="#kontak" class="mobile-link text-ink/80">kontak</a>
+    </nav>
+  </div>
+</header>
+
+<!--HERO-->
+<section class="section-pad relative overflow-hidden">
+  <div class="absolute inset-0 db-grid opacity-60 pointer-events-none"></div>
+  <div class="max-w-6xl mx-auto px-6 md:px-10 relative">
+
+    <div class="flex flex-wrap gap-2 mb-10 fade-up">
+      <span class="code-tag inline-flex items-center px-3 py-1.5 rounded-md text-xs">
+        <span class="brkt">[</span>Web Development<span class="brkt">]</span>
+      </span>
+      <span class="code-tag inline-flex items-center px-3 py-1.5 rounded-md text-xs">
+        <span class="brkt">[</span>Database Management<span class="brkt">]</span>
+      </span>
+      <span class="code-tag inline-flex items-center px-3 py-1.5 rounded-md text-xs">
+        <span class="brkt">[</span>Sistem Digital<span class="brkt">]</span>
+      </span>
+    </div>
+
+    <div class="grid md:grid-cols-[1.3fr_1fr] gap-12 items-start">
+      <div class="fade-up">
+        <p class="eyebrow mb-3">whoami</p>
+        <h1 class="text-4xl sm:text-5xl md:text-[3.1rem] leading-[1.15] font-bold text-ink max-w-xl">
+          Membangun Solusi Digital &amp; Perancangan Database yang Terstruktur.
+        </h1>
+        <p class="mt-6 text-muted text-base md:text-lg leading-relaxed max-w-lg">
+          Saya Muhammad Farsa Alfathir Setya, mahasiswa Teknologi Informasi semester 5 di UIN Walisongo Semarang. Berfokus pada perancangan database MySQL dan web development, serta selalu terbuka mengeksplorasi berbagai solusi digital.
+        </p>
+
+        <div class="mt-9 flex flex-wrap items-center gap-3">
+          <a href="#proyek" class="btn-primary inline-flex items-center gap-2 px-5 py-3 rounded-md text-sm font-semibold">
+            lihat_proyek()
+          </a>
+          <a href="#kontak" class="btn-outline inline-flex items-center px-5 py-3 rounded-md text-sm font-semibold">
+            hubungi_saya
+          </a>
+          <a href="CV_Muhammad_Farsa_Alfathir_Setya.pdf" download class="btn-ghost inline-flex items-center px-5 py-3 rounded-md text-sm font-semibold">
+            download_cv.pdf
+          </a>
+        </div>
+      </div>
+
+      <div class="space-y-5">
+        <!-- Profile photo -->
+        <div class="panel p-3 fade-up">
+          <div class="aspect-square rounded-lg overflow-hidden avatar-fallback relative">
+            <img src="farsaa.png" alt="Foto Muhammad Farsa Alfathir Setya"
+                 class="w-full h-full object-cover relative z-10"
+                 onerror="this.style.display='none'">
+            <div class="absolute inset-0 flex items-center justify-center">
+              <span class="mono text-xs text-muted">images/profile.jpg</span>
+            </div>
+          </div>
+          <p class="mono text-xs text-muted mt-2 text-center">~/farsa.jpg</p>
+        </div>
+
+        <!-- Terminal status card -->
+        <div class="fade-up panel overflow-hidden shadow-[0_1px_2px_rgba(0,0,0,0.3)]">
+          <div class="flex items-center gap-2 px-4 py-3 border-b border-border bg-panelAlt">
+            <span class="win-dot bg-red-500/70"></span>
+            <span class="win-dot bg-amber/70"></span>
+            <span class="win-dot bg-accent2/70"></span>
+            <span class="mono text-xs text-muted ml-2">status.json</span>
+          </div>
+          <div class="p-5 mono text-xs md:text-[13px] leading-relaxed">
+            <p><span class="text-muted">{</span></p>
+            <p class="pl-4"><span class="text-accent">"status"</span><span class="text-muted">:</span> <span class="text-accent2">"Aktif Eksplorasi &amp; Membangun Project"</span><span class="text-muted">,</span></p>
+            <p class="pl-4"><span class="text-accent">"fokus"</span><span class="text-muted">:</span> <span class="text-accent2">"Database Management &amp; Web Fundamentals"</span><span class="text-muted">,</span></p>
+            <p class="pl-4"><span class="text-accent">"peran"</span><span class="text-muted">:</span> <span class="text-accent2">"IT Student &amp; Tech Learner"</span><span class="text-muted">,</span></p>
+            <p class="pl-4"><span class="text-accent">"tujuan"</span><span class="text-muted">:</span> <span class="text-accent2">"Membangun Fondasi Sistem &amp; Portofolio"</span><span class="text-muted">,</span></p>
+            <p class="pl-4"><span class="text-accent">"stack"</span><span class="text-muted">: [</span></p>
+            <p class="pl-8 text-amber">"MySQL", "SQL", "PHP", "HTML/CSS/JS", "Python", "Figma"</p>
+            <p class="pl-4"><span class="text-muted">]</span></p>
+            <p><span class="text-muted">}</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--TENTANG SAYA-->
+<section id="tentang" class="section-pad border-t border-border">
+  <div class="max-w-6xl mx-auto px-6 md:px-10">
+    <div class="max-w-2xl fade-up">
+      <p class="eyebrow mb-2">tentang_saya</p>
+      <h2 class="text-3xl md:text-4xl font-bold text-ink leading-tight">
+        Belajar dari proses, tumbuh lewat praktik.
+      </h2>
+      <p class="text-muted mt-4 leading-relaxed">
+        Sebagai mahasiswa IT, saya berfokus menghubungkan logika pemrograman dengan pengelolaan data yang rapi, sembari membawa pengalaman kepemimpinan nyata dari dunia kerja lapangan.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-5 mt-12">
+      <div class="panel p-6 fade-up">
+        <span class="mono text-xs text-accent2">row_01</span>
+        <h3 class="text-lg font-semibold text-ink mt-2 mb-2">Manajemen Database &amp; Logika Data</h3>
+        <p class="text-sm text-muted leading-relaxed">
+          Memahami fondasi pembuatan struktur database MySQL, penulisan query SQL, serta cara menyajikan alur data agar mudah diakses dan dikelola.
+        </p>
+      </div>
+      <div class="panel p-6 fade-up">
+        <span class="mono text-xs text-accent2">row_02</span>
+        <h3 class="text-lg font-semibold text-ink mt-2 mb-2">Kepemimpinan &amp; Ketahanan Kerja</h3>
+        <p class="text-sm text-muted leading-relaxed">
+          Pengalaman memimpin operasional dan tim sebagai Outlet Leader FnB mengasah ketahanan mental, komunikasi langsung, dan manajemen waktu di bawah tekanan.
+        </p>
+      </div>
+      <div class="panel p-6 fade-up">
+        <span class="mono text-xs text-accent2">row_03</span>
+        <h3 class="text-lg font-semibold text-ink mt-2 mb-2">Pengembangan Web Terintegrasi</h3>
+        <p class="text-sm text-muted leading-relaxed">
+          Mengintegrasikan tampilan web interaktif (HTML/CSS/JS) dengan backend (PHP) dan database MySQL menjadi satu kesatuan aplikasi fungsional.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--LAYANAN-->
+
+<section id="layanan" class="section-pad border-t border-border bg-panelAlt/40">
+  <div class="max-w-6xl mx-auto px-6 md:px-10">
+    <div class="max-w-2xl fade-up">
+      <p class="eyebrow mb-2">layanan</p>
+      <h2 class="text-3xl md:text-4xl font-bold text-ink leading-tight">
+        Eksplorasi &amp; solusi yang bisa saya bantu.
+      </h2>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-5 mt-12">
+      <div class="panel p-6 fade-up">
+        <div class="w-10 h-10 rounded-md bg-accent/10 border border-accent/20 flex items-center justify-center mb-4">
+          <svg class="w-5 h-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L3 12l3-6M18 6l3 6-3 6M14 4l-4 16"/>
+          </svg>
+        </div>
+        <h3 class="text-lg font-semibold text-ink mb-2">Pengembangan Web Sederhana</h3>
+        <p class="text-sm text-muted leading-relaxed">
+          Membangun situs web atau sistem informasi berbasis PHP &amp; MySQL yang responsif, rapi, dan mudah dioperasikan.
+        </p>
+      </div>
+      <div class="panel p-6 fade-up">
+        <div class="w-10 h-10 rounded-md bg-accent/10 border border-accent/20 flex items-center justify-center mb-4">
+          <svg class="w-5 h-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+            <ellipse cx="12" cy="6" rx="7" ry="3"/>
+            <path stroke-linecap="round" stroke-linejoin="round" d="M5 6v6c0 1.66 3.13 3 7 3s7-1.34 7-3V6M5 12v6c0 1.66 3.13 3 7 3s7-1.34 7-3v-6"/>
+          </svg>
+        </div>
+        <h3 class="text-lg font-semibold text-ink mb-2">Perancangan &amp; Pengelolaan Database</h3>
+        <p class="text-sm text-muted leading-relaxed">
+          Merancang relasi antar tabel, merapikan struktur data, dan menyusun query SQL untuk kebutuhan sistem berbasis data.
+        </p>
+      </div>
+      <div class="panel p-6 fade-up">
+        <div class="w-10 h-10 rounded-md bg-accent/10 border border-accent/20 flex items-center justify-center mb-4">
+          <svg class="w-5 h-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h6l6 6v10a2 2 0 01-2 2z"/>
+          </svg>
+        </div>
+        <h3 class="text-lg font-semibold text-ink mb-2">Digitalisasi Data &amp; Alur Kerja</h3>
+        <p class="text-sm text-muted leading-relaxed">
+          Membantu mengkonversi alur kerja manual atau pencatatan file terpisah menjadi sistem database terpusat yang terstruktur.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--PENGALAMAN-->
+<section id="pengalaman" class="section-pad border-t border-border">
+  <div class="max-w-6xl mx-auto px-6 md:px-10">
+    <div class="max-w-2xl fade-up">
+      <p class="eyebrow mb-2">pengalaman</p>
+      <h2 class="text-3xl md:text-4xl font-bold text-ink leading-tight">
+        Belajar, memimpin, dan terus berkembang.
+      </h2>
+    </div>
+
+    <div class="mt-12 space-y-4">
+      <div class="panel p-6 flex flex-col md:flex-row md:items-start gap-4 md:gap-8 fade-up border-l-2 !border-l-accent2">
+        <span class="mono text-xs text-accent2 shrink-0 md:w-40 pt-1">2024 — sekarang</span>
+        <div>
+          <h3 class="text-lg font-semibold text-ink mb-1.5">Semester 5 — Teknologi Informasi, UIN Walisongo Semarang</h3>
+          <p class="text-sm text-muted leading-relaxed">
+            Menempuh pendidikan akademik dengan fokus pada rekayasa perangkat lunak, struktur data, pengolahan basis data (DBMS), dan arsitektur sistem digital.
+          </p>
+        </div>
+      </div>
+      <div class="panel p-6 flex flex-col md:flex-row md:items-start gap-4 md:gap-8 fade-up border-l-2 !border-l-accent2">
+        <span class="mono text-xs text-accent2 shrink-0 md:w-40 pt-1">feb — sep 2025
+        </span>
+        <div>
+          <h3 class="text-lg font-semibold text-ink mb-1.5">Team Leader — Waffelicious (Outlet F&amp;B)</h3>
+          <p class="text-sm text-muted leading-relaxed">
+            Dipercaya memimpin operasional outlet dan manajemen tim. Membentuk soft skill kuat dalam kepemimpinan, problem solving langsung di lapangan, disiplin waktu, dan ketahanan under pressure.
+
+          </p>
+        </div>
+      </div>
+      <div class="panel p-6 flex flex-col md:flex-row md:items-start gap-4 md:gap-8 fade-up border-l-2 !border-l-accent2">
+        <span class="mono text-xs text-accent2 shrink-0 md:w-40 pt-1">eksplorasi mandiri</span>
+        <div>
+          <h3 class="text-lg font-semibold text-ink mb-1.5">Project Akademik &amp; Self-Learning</h3>
+          <p class="text-sm text-muted leading-relaxed">
+            Mengembangkan project latihan mandiri serta tugas perkuliahan menggunakan stack PHP, MySQL, HTML/CSS/JS, dan merancang wireframe di Figma.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--PROYEK-->
+<section id="proyek" class="section-pad border-t border-border bg-panelAlt/40">
+  <div class="max-w-6xl mx-auto px-6 md:px-10">
+    <div class="max-w-2xl fade-up">
+      <p class="eyebrow mb-2">SELECT * FROM proyek</p>
+      <h2 class="text-3xl md:text-4xl font-bold text-ink leading-tight">
+        Karya dan eksperimen digital.
+      </h2>
+      <p class="text-muted mt-4 leading-relaxed">
+        Beberapa proyek di bawah ini adalah hasil eksplorasi mandiri dan tugas perkuliahan dalam mengelola database dan membangun sistem web.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-5 mt-12">
+
+      <!--Project 1-->
+      <article class="panel overflow-hidden fade-up flex flex-col">
+        <div class="aspect-video thumb-fallback relative">
+          <img src="j17fitnesCOVER.png" alt="Cover proyek Sistem Informasi Manajemen Gym"
+               class="w-full h-full object-cover relative z-10" onerror="this.style.display='none'">
+          <span class="mono text-[10px] text-muted absolute bottom-2 left-3">images/project-gym.jpg</span>
+        </div>
+        <div class="p-6 flex flex-col flex-1">
+          <div class="flex flex-wrap gap-2 mb-3">
+            <span class="code-tag px-2 py-1 rounded text-[11px]">PHP</span>
+            <span class="code-tag px-2 py-1 rounded text-[11px]">MySQL</span>
+            <span class="code-tag px-2 py-1 rounded text-[11px]">Bootstrap</span>
+          </div>
+          <h3 class="text-lg font-semibold text-ink mb-2">Sistem Informasi Manajemen Gym</h3>
+          <p class="text-sm text-muted leading-relaxed flex-1">
+            Sistem manajemen gym untuk J17 Fitnes Ketileng: autentikasi, kontrol akses berbasis peran, notifikasi masa aktif member, manajemen stok, dan check-in harian. PDO prepared statements untuk keamanan query.
+          </p>
+          <a href="https://github.com/FarsaAlfathir/digitalisasi-j17-gym" class="mt-5 inline-flex items-center gap-1.5 mono text-sm font-semibold text-accent hover:text-accent2">
+            lihat_detail() →
+          </a>
+        </div>
+      </article>
+
+      <!--Project 2-->
+      <article class="panel overflow-hidden fade-up flex flex-col">
+        <div class="aspect-video thumb-fallback relative">
+          <img src="ManajemenKaryawanCOVER.png" alt="Cover Manajemen Karyawan"
+               class="w-full h-full object-cover relative z-10" onerror="this.style.display='none'">
+          <span class="mono text-[10px] text-muted absolute bottom-2 left-3">images/project-calculator.jpg</span>
+        </div>
+        <div class="p-6 flex flex-col flex-1">
+          <div class="flex flex-wrap gap-2 mb-3">
+            <span class="code-tag px-2 py-1 rounded text-[11px]">Java</span>
+            <span class="code-tag px-2 py-1 rounded text-[11px]">Java Swing</span>
+            <span class="code-tag px-2 py-1 rounded text-[11px]">MySQL</span>
+          </div>
+          <h3 class="text-lg font-semibold text-ink mb-2">Manajemen Karyawan</h3>
+          <p class="text-sm text-muted leading-relaxed flex-1">
+            Aplikasi desktop berbasis Java Swing dengan database MySQL: autentikasi login, kontrol akses berbasis peran (admin & karyawan), CRUD data karyawan, pencatatan absensi real-time, pengajuan cuti, dan riwayat absensi. Dibangun dengan konsep OOP — enkapsulasi, inheritance, dan polymorphism.
+          </p>
+          <a href="https://github.com/FarsaAlfathir/manajemen_karyawan.java" class="mt-5 inline-flex items-center gap-1.5 mono text-sm font-semibold text-accent hover:text-accent2">
+            lihat_detail() →
+          </a>
+        </div>
+      </article>
+
+      <!--Project 3-->
+      <article class="panel overflow-hidden fade-up flex flex-col">
+        <div class="aspect-video thumb-fallback relative">
+          <img src="FitCoCOVER.png" alt="Cover proyek desain UI/UX FitCo"
+               class="w-full h-full object-cover relative z-10" onerror="this.style.display='none'">
+          <span class="mono text-[10px] text-muted absolute bottom-2 left-3">images/project-fitco.jpg</span>
+        </div>
+        <div class="p-6 flex flex-col flex-1">
+          <div class="flex flex-wrap gap-2 mb-3">
+            <span class="code-tag px-2 py-1 rounded text-[11px]">Figma</span>
+            <span class="code-tag px-2 py-1 rounded text-[11px]">UI/UX</span>
+          </div>
+          <h3 class="text-lg font-semibold text-ink mb-2">FitCo — Desain UI/UX Aplikasi Fitness</h3>
+          <p class="text-sm text-muted leading-relaxed flex-1">
+            Rancangan antarmuka aplikasi fitness di Figma, dari alur onboarding hingga tampilan pelacakan latihan, dengan fokus pada kemudahan penggunaan.
+          </p>
+          <a href="https://www.figma.com/design/K43Aq7BXcLMOAuQg4oWVCH/IMK?node-id=0-1&t=pkg0ejr8bmrNGEiC-1" class="mt-5 inline-flex items-center gap-1.5 mono text-sm font-semibold text-accent hover:text-accent2">
+            lihat_detail() →
+          </a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!--KONTAK-->
+<section id="kontak" class="section-pad border-t border-border">
+  <div class="max-w-6xl mx-auto px-6 md:px-10">
+    <div class="panel p-8 md:p-14 text-center fade-up">
+      <p class="eyebrow mb-2 justify-center flex">kontak</p>
+      <h2 class="text-3xl md:text-4xl font-bold text-ink mt-1 max-w-xl mx-auto leading-tight">
+        Mari diskusi dan belajar bersama.
+      </h2>
+      <p class="text-muted mt-4 max-w-md mx-auto leading-relaxed">
+        Selalu terbuka untuk obrolan seputar teknologi, eksplorasi sistem digital, atau peluang kolaborasi proyek pengembangan web dan database.
+      </p>
+
+      <div class="flex flex-wrap justify-center gap-3 mt-9">
+        <a href="mailto:farsa.alfathir@gmail.com" class="btn-primary inline-flex items-center gap-2 px-5 py-3 rounded-md text-sm font-semibold">
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l9 6 9-6M5 5h14a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2z"/>
+          </svg>
+          email
+        </a>
+        <a href="https://github.com/FarsaAlfathir" target="_blank" rel="noopener" class="btn-outline inline-flex items-center gap-2 px-5 py-3 rounded-md text-sm font-semibold">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2C6.48 2 2 6.58 2 12.19c0 4.49 2.87 8.3 6.84 9.64.5.1.68-.22.68-.49 0-.24-.01-.88-.01-1.72-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.37-2.22-.26-4.56-1.14-4.56-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.31.1-2.73 0 0 .84-.28 2.75 1.05a9.36 9.36 0 015 0c1.91-1.33 2.75-1.05 2.75-1.05.55 1.42.2 2.47.1 2.73.64.72 1.03 1.63 1.03 2.75 0 3.93-2.35 4.79-4.58 5.05.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .27.18.6.69.49A10.02 10.02 0 0022 12.19C22 6.58 17.52 2 12 2z"/>
+          </svg>
+          github
+        </a>
+        <a href="https://wa.me/6288232673086" target="_blank" rel="noopener" class="btn-outline inline-flex items-center gap-2 px-5 py-3 rounded-md text-sm font-semibold">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+          </svg>
+          whatsapp
+        </a>
+      </div>
+    </div>
+
+    <footer class="text-center mt-10 mono text-xs text-muted">
+      © 2026 Muhammad Farsa Alfathir Setya.
+    </footer>
+  </div>
+</section>
+
+<script>
+  const menuBtn = document.getElementById('menuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const iconOpen = document.getElementById('menuIconOpen');
+  const iconClose = document.getElementById('menuIconClose');
+
+  menuBtn.addEventListener('click', () => {
+    const isHidden = mobileMenu.classList.contains('hidden');
+    mobileMenu.classList.toggle('hidden');
+    iconOpen.classList.toggle('hidden');
+    iconClose.classList.toggle('hidden');
+    menuBtn.setAttribute('aria-expanded', String(isHidden));
+  });
+
+  document.querySelectorAll('.mobile-link').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.add('hidden');
+      iconOpen.classList.remove('hidden');
+      iconClose.classList.add('hidden');
+      menuBtn.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      const targetId = this.getAttribute('href');
+      if (targetId.length <= 1) return;
+      const target = document.querySelector(targetId);
+      if (!target) return;
+      e.preventDefault();
+      const headerOffset = 64;
+      const top = target.getBoundingClientRect().top + window.pageYOffset - headerOffset;
+      window.scrollTo({ top, behavior: 'smooth' });
+    });
+  });
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in-view');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
